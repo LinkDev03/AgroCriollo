@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AgroCriollo · Lo natural en tu mesa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Nunito+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f1f2d2;--surface:#fbfbe8;--ink:#26301a;--muted:#55603f;--green:#4a6a2a;--green-ink:#f6f7dc;--egg:#b9693a;--line:#c9cc9c;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b2214;--surface:#242d1a;--ink:#eef0cf;--muted:#b3bb93;--green:#a6c76a;--green-ink:#1b2214;--egg:#e39466;--line:#3b4829;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b2214;--surface:#242d1a;--ink:#eef0cf;--muted:#b3bb93;--green:#a6c76a;--green-ink:#1b2214;--egg:#e39466;--line:#3b4829;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Nunito Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--egg);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;text-decoration:none;color:var(--green)}
+nav{display:flex;gap:1.2rem;font-weight:600}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+@media(max-width:620px){nav a:not(.btn){display:none}}
+.btn{display:inline-block;background:var(--green);color:var(--green-ink);font-weight:700;padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--green)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;padding:3rem 0 4.5rem}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:1.5rem}}
+.hero p.lead{font-size:1.25rem;color:var(--muted)}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.eggs{width:100%;max-width:420px;justify-self:center}
+.eggs .e{transform-origin:50% 100%;animation:rock 3.2s ease-in-out infinite}
+.eggs .e:nth-child(2){animation-delay:.5s}.eggs .e:nth-child(3){animation-delay:1s}
+@keyframes rock{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.eggs .e{animation:none}html{scroll-behavior:auto}}
+section{padding:4rem 0}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.lines{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+@media(max-width:820px){.lines{grid-template-columns:1fr}}
+.line{padding:1.8rem}
+.line+.line{border-left:1px solid var(--line)}
+@media(max-width:820px){.line+.line{border-left:0;border-top:1px solid var(--line)}}
+.line p{color:var(--muted);margin:0}
+.loop{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0 0;padding:0;list-style:none}
+.loop li{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.5rem 1rem;font-weight:600}
+.loop li+li::before{content:"→ ";color:var(--egg)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:.9rem 1.1rem;text-align:left;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-family:"Bricolage Grotesque",sans-serif}
+td:nth-child(2){color:var(--green);font-weight:700}
+td:nth-child(3){color:var(--muted)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
+.plan.main{border:2px solid var(--green)}
+.price{font:800 2rem "Bricolage Grotesque",sans-serif;color:var(--green)}
+.plan ul{padding-left:1.1rem;color:var(--muted);margin:.6rem 0 0}
+.note{font-size:.9rem;color:var(--muted);margin-top:1rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:1.5rem}}
+form{display:grid;gap:.9rem}
+label{font-weight:600;display:grid;gap:.3rem}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;width:100%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.8rem}
+@media(max-width:820px){.stats{grid-template-columns:1fr}}
+.stats b{display:block;font:800 clamp(2.4rem,5vw,3.6rem) "Bricolage Grotesque",sans-serif;color:var(--green);line-height:1}
+.stats span{color:var(--muted)}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem}
+@media(max-width:820px){.notes{grid-template-columns:1fr}}
+.notes p{margin:0;max-width:none;background:var(--surface);border-left:5px solid var(--egg);padding:1rem 1.2rem;border-radius:0 10px 10px 0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.7rem}
+summary{font-weight:700;cursor:pointer}
+details p{margin:.7rem 0 0;color:var(--muted)}
+footer{background:var(--green);color:var(--green-ink);padding:2rem 0;margin-top:2rem}
+footer p{margin:0;max-width:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="#inicio">AgroCriollo</a>
+  <nav><a href="#lineas">Productos</a><a href="#circular">Cómo trabajamos</a><a href="#mercado">Por qué ahora</a><a href="#suscripcion">Suscripción</a><a href="#preguntas">Preguntas</a><a class="btn" href="#contacto">Pedir huevos</a></nav>
+</header>
+
+<main id="inicio">
+<div class="hero">
+  <div>
+    <h1>Huevos de gallinas que salen a pastar.</h1>
+    <p class="lead">Huevo criollo de pastoreo con origen visible en cada caja, directo del campo a tu casa en el Valle de Aburrá. Sin intermediarios y con precio justo.</p>
+    <div class="cta"><a class="btn" href="#suscripcion">Ver suscripciones</a><a class="btn alt" href="#circular">Conocer el proceso</a></div>
+  </div>
+  <svg class="eggs" viewBox="0 0 400 340" role="img" aria-label="Tres huevos criollos sobre pasto">
+    <path d="M0 300 Q40 270 70 300 Q110 260 140 300 Q180 265 210 300 Q250 262 285 300 Q325 268 355 300 Q380 280 400 300 V340 H0Z" fill="var(--green)"/>
+    <g class="e"><path d="M120 250c-38 0-58-34-58-76 0-48 30-92 58-92s58 44 58 92c0 42-20 76-58 76z" fill="var(--egg)"/><ellipse cx="98" cy="150" rx="9" ry="22" fill="#fff" opacity=".25" transform="rotate(12 98 150)"/></g>
+    <g class="e"><path d="M235 262c-34 0-52-30-52-68 0-43 27-82 52-82s52 39 52 82c0 38-18 68-52 68z" fill="var(--egg)" opacity=".85"/></g>
+    <g class="e"><path d="M326 270c-28 0-44-25-44-56 0-36 22-68 44-68s44 32 44 68c0 31-16 56-44 56z" fill="var(--egg)" opacity=".7"/></g>
+  </svg>
+</div>
+</div>
+
+<div class="band"><section id="lineas"><div class="wrap">
+  <h2>Tres líneas, una sola finca</h2>
+  <div class="lines">
+    <div class="line"><h3>Huevo criollo de pastoreo</h3><p>Gallinas libres de jaula, huevos frescos de yema firme e intensa, con etiqueta que cuenta de dónde vienen y cómo se criaron.</p></div>
+    <div class="line"><h3>Abono orgánico</h3><p>La gallinaza se composta de forma controlada y se vende a huerteros, jardineros y pequeños agricultores.</p></div>
+    <div class="line"><h3>Formación en avicultura sostenible</h3><p>Talleres y acompañamiento para quienes quieren montar su propio negocio avícola casero con buenas prácticas.</p></div>
+  </div>
+</div></section></div>
+
+<section id="circular"><div class="wrap">
+  <h2>Nada se desperdicia</h2>
+  <p>En AgroCriollo el 100 % de la gallinaza se transforma en abono. Eso reduce la contaminación de suelo y agua, baja los costos de manejo de residuos y nos permite ofrecer un precio justo.</p>
+  <ul class="loop"><li>Gallinas en pastoreo</li><li>Huevos con trazabilidad</li><li>Gallinaza compostada</li><li>Abono para huertas</li><li>Talleres y comunidad</li></ul>
+  <div class="notes"><p>Un alimento natural, saludable y accesible, sin perder calidad por costos elevados.</p><p>Uso correcto de recursos y residuos, con una producción sostenible y responsable.</p></div>
+</div></section>
+
+<section id="mercado"><div class="wrap">
+  <h2>Un alimento de todos los días, con demanda creciente</h2>
+  <div class="stats">
+    <div><b>366</b><span>huevos consume cada colombiano al año</span></div>
+    <div><b>9,1 %</b><span>creció el sector avícola colombiano en 2025</span></div>
+    <div><b>3 en 1</b><span>huevos, abono y formación en una sola finca</span></div>
+  </div>
+  <p class="note">Fuentes: FENAVI (2026) y Sectorial (2026).</p>
+</div></section>
+
+<div class="band"><section id="diferencia"><div class="wrap">
+  <h2>Por qué elegirnos frente al huevo industrial</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Lo que importa</th><th>AgroCriollo</th><th>Huevo industrial</th></tr></thead>
+    <tbody>
+      <tr><td>Origen del huevo</td><td>Etiqueta con trazabilidad</td><td>Difícil de verificar</td></tr>
+      <tr><td>Crianza</td><td>Pastoreo, libre de jaula</td><td>Producción masiva</td></tr>
+      <tr><td>Compra</td><td>Directa o por suscripción</td><td>Cadena de distribución</td></tr>
+      <tr><td>Residuos</td><td>Convertidos en abono</td><td>Sin aprovechamiento visible</td></tr>
+      <tr><td>Empaque</td><td>Sostenible</td><td>Convencional</td></tr>
+    </tbody>
+  </table></div>
+</div></section></div>
+
+<section id="suscripcion"><div class="wrap">
+  <h2>Recibe huevos frescos sin acordarte de pedirlos</h2>
+  <p>Elige la frecuencia. Entregamos en tu domicilio en el Valle de Aburrá en rutas programadas.</p>
+  <div class="plans">
+    <div class="plan"><h3>Semanal</h3><div class="price">30 huevos</div><ul><li>Entrega cada semana</li><li>Etiqueta de trazabilidad</li></ul></div>
+    <div class="plan main"><h3>Quincenal</h3><div class="price">60 huevos</div><ul><li>Entrega cada 15 días</li><li>Descuento en abono para clientes frecuentes</li></ul></div>
+    <div class="plan"><h3>Huerta en casa</h3><div class="price">Huevos + abono</div><ul><li>Huevos y bolsa de abono orgánico</li><li>Invitación a talleres</li></ul></div>
+  </div>
+  <p class="note">El valor final de cada plan se confirma al lanzar.</p>
+</div></section>
+
+<section id="preguntas"><div class="wrap">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Dónde entregan?</summary><p>Estamos arrancando como piloto en zonas urbanas y periurbanas del Valle de Aburrá, con rutas de entrega programadas.</p></details>
+  <details><summary>¿Cómo sé de dónde viene mi huevo?</summary><p>Cada empaque lleva una etiqueta con información clara sobre el método de cría y el origen del producto.</p></details>
+  <details><summary>¿Para quién es el abono?</summary><p>Para huerteros urbanos, jardineros y pequeños agricultores. Los clientes frecuentes reciben descuentos.</p></details>
+  <details><summary>¿Qué se aprende en los talleres?</summary><p>Producción avícola sostenible, cuidado responsable de las aves y manejo adecuado de residuos para negocios caseros.</p></details>
+</div></section>
+
+<div class="band"><section id="contacto"><div class="wrap split">
+  <div>
+    <h2>Escríbenos y reserva tu primera caja</h2>
+    <p>Déjanos tus datos y te contamos cuándo empieza tu ruta de entrega.</p>
+  </div>
+  <form id="f">
+    <label>Nombre<input name="n" required autocomplete="name"></label>
+    <label>Correo<input name="c" type="email" required autocomplete="email"></label>
+    <label>Me interesa<select name="i"><option>Suscripción de huevos</option><option>Abono orgánico</option><option>Talleres de avicultura</option></select></label>
+    <label>Municipio<input name="m" placeholder="Medellín, Envigado, Itagüí…"></label>
+    <button class="btn" type="submit">Reservar mi lugar</button>
+    <p id="ok" class="note" role="status" hidden>¡Gracias! Se abrirá tu correo con el mensaje listo para enviar.</p>
+  </form>
+</div></section></div>
+</main>
+
+<footer><div class="wrap"><p>AgroCriollo · Lo natural en tu mesa.</p></div></footer>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();var d=new FormData(this);
+  var body='Nombre: '+d.get('n')+'\nCorreo: '+d.get('c')+'\nInterés: '+d.get('i')+'\nMunicipio: '+d.get('m');
+  document.getElementById('ok').hidden=false;
+  window.location.href='mailto:luis.barrerab@cun.edu.co?subject='+encodeURIComponent('Reserva AgroCriollo')+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
